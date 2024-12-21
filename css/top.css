@@ -1,0 +1,110 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden
+}
+body {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  background: none;
+  font-family: 'Shippori Mincho', serif
+}
+.ripples-container {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url(../img/톱페이지/2.webp);
+  background-attachment: fixed;
+  background-size: cover
+}
+.content {
+  position: relative;
+  z-index: 1
+}
+.boukyaku,
+.abcd {
+  position: relative;
+  z-index: 2
+}
+.boukyaku {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh
+}
+.abcd {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+.abc {
+  color: #E5E89E;
+  font-size: 14pt;
+  line-height: 2.2;
+  letter-spacing: .05em;
+  max-width: 1400px;
+  padding: 20px;
+  margin-bottom: 65px;
+  font-weight: 200;
+  font-family: 'Shippori Mincho', serif
+}
+.main-image {
+  max-width: 100%;
+  max-height: 80vh
+}
+.button {
+  display: inline-block;
+  padding: 10px 40px;
+  color: #E5E89E;
+  border: 1px solid #E5E89E;
+  text-decoration: none;
+  font-size: 14pt;
+  transition: all .3s ease;
+  background-color: transparent;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1)
+}
+.button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(229, 232, 158, .15);
+  transition: all .75s ease;
+  transform: translate(-50%, -50%) rotate(45deg)
+}
+.button:hover:before {
+  width: 0;
+  height: 0
+}
+.button:hover {
+  background-color: #E5E89E;
+  color: #000;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .3);
+  transform: translateY(-3px)
+}
+.fade-in-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out
+}
+.fade-in-out.visible {
+  opacity: 1
+}

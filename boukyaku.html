@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>boukyaku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" href="css/top.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://github.com/animate-css/animate.css.git">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+</head>
+<body>
+    <div class="ripples-container">
+        <div class="content">
+            <div class="boukyaku fade-in-out">
+                <img class="main-image" src="img/톱페이지/1.webp" alt="Main Image">
+            </div>
+            <div class="abcd fade-in-out">
+                <span class="abc">
+                    フィルムカメラは、特有の質感とイメージで想像力を刺激します。<br>
+                    撮影時、場面がフィルムにどう映るかを想像します。<br>
+                    フィルムの質感は、過去の郷愁を呼び起こし、現在の瞬間も感じさせます。<br>
+                    私の写真が過去と現在をつなぐ媒介体になり、人々が忘れられた場所で過去の輝きを感じ、郷愁を覚えることを願います。<br>
+                    写真が単なる記録ではなく、時間と感情をつなぐものとなることを目指しています。
+                </span>
+                <a href="index.html" class="button fade-in-out">写真集へ</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.ripples.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('body').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.04
+            });
+        });
+
+        // JavaScript to adjust position of image and text
+        document.addEventListener('DOMContentLoaded', () => {
+            const abcd = document.querySelector('.abcd');
+
+            const setMiddlePosition = (element) => {
+                const windowHeight = window.innerHeight;
+                const elementHeight = element.offsetHeight;
+                const offset = (windowHeight - elementHeight) / 2;
+                element.style.transform = `translateY(${offset}px)`;
+            };
+
+            setMiddlePosition(abcd);
+
+            window.addEventListener('resize', () => {
+                setMiddlePosition(abcd);
+            });
+        });
+
+        // Intersection Observer를 사용하여 요소가 뷰포트에 들어오고 나갈 때 애니메이션 적용
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-out').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
